@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// const names = ['hellsent','grovester','slade'];
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
