@@ -1,12 +1,16 @@
 // import logo from './logo.svg';
 
-function Child(props) {
+function TodoList(props) {
+
+    const tasks = props.tasks.map((t,index )=>{
+        return <li key={index}>{t}</li>;
+    });
+
     return (
         <div>
-            <h1>{props.value}</h1>
-            <h1>{props.text}</h1>
+            <ul>{tasks}</ul>
         </div>
     );
 }
 
-export default Child;
+export default TodoList;

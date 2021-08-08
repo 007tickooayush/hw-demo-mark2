@@ -1,29 +1,41 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import Child from './Child';
+import TodoList from './Child'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count:0
+      todos:[],
+      task:''
     };
 
-    this.Increment = this.Increment.bind(this);
+    this.addNewTodo = this.addNewTodo.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  Increment(){
-    this.setState({count: this.state.count+1});
+  addNewTodo(){
+    this.state.todos.push(this.state.task);
+    this.setState({
+      todos: this.state.todos
+    });
   }
 
+  handleChange(e){
+    const value = e.target.value;
+    this.setState({
+      task:value
+    });
+  }
   render() {
 
     return (
       <div className="App" >
         <header className="App-header" >
-          <button onClick={this.Increment}>increment</button>
-          <Child  text="example counter" value={this.state.count} />
+          <input onChange={this.handleChange} type="text" value={this.state.text} />
+          <button onClick={this.addNewTodo}>Add New Task</button>
+          <TodoList tasks={this.state.todos}/>
         </header>
       </div>
     );
