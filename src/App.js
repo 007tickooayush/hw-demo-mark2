@@ -7,27 +7,44 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos:[],
-      task:''
+      todos: [],
+      task: ''
     };
 
     this.addNewTodo = this.addNewTodo.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    // bind the function recieved from TodoList component
+    this.removeItem = this.removeItem.bind(this);
   }
 
-  addNewTodo(){
+  // define the actual removeItem function
+  removeItem(index) {
+    // alert(index);
+    const todoList = this.state.todos;
+    todoList.splice(index, 1);
+    this.setState({ todos: todoList });
+  }
+
+  // append a todos item
+  addNewTodo() {
     this.state.todos.push(this.state.task);
     this.setState({
       todos: this.state.todos
     });
+    // this.setState(lastState => ({
+    //   todos:lastState.todos.concat(this.state.text)
+    // }));
   }
 
-  handleChange(e){
+  // handle the change of the input field
+  handleChange(e) {
     const value = e.target.value;
     this.setState({
-      task:value
+      task: value
     });
   }
+
   render() {
 
     return (
@@ -35,7 +52,7 @@ class App extends React.Component {
         <header className="App-header" >
           <input onChange={this.handleChange} type="text" value={this.state.text} />
           <button onClick={this.addNewTodo}>Add New Task</button>
-          <TodoList tasks={this.state.todos}/>
+          <TodoList removeItem={this.removeItem} tasks={this.state.todos} />
         </header>
       </div>
     );

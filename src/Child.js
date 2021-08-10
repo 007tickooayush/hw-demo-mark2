@@ -1,11 +1,25 @@
 // import logo from './logo.svg';
 
+
 function TodoList(props) {
 
-    const tasks = props.tasks.map((t,index )=>{
-        return <li key={index}>{t}</li>;
+    // call the function in parent component
+    function removeItem(index) {
+        // pass the index to the parent component function
+        props.removeItem(index);
+
+    }
+
+    const tasks = props.tasks.map((t, index) => {
+
+        return (<li key={index}>
+            {t}
+            <button
+                onClick={() => removeItem(index)} >delete task</button>
+        </li>);
     });
 
+    // return the list of tasks (todos)
     return (
         <div>
             <ul>{tasks}</ul>
