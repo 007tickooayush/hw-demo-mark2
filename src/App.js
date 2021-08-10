@@ -11,13 +11,18 @@ class App extends React.Component {
       task: ''
     };
 
-    this.addNewTodo = this.addNewTodo.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    // binding it explicitly upon rendering
+    // this.addNewTodo = this.addNewTodo.bind(this);
+    
+    // binding it explicitly upon rendering
+    // this.handleChange = this.handleChange.bind(this);
 
     // bind the function recieved from TodoList component
-    this.removeItem = this.removeItem.bind(this);
+    // this.removeItem = this.removeItem.bind(this);
+    // binding it explicitly upon rendering
   }
 
+  // component communication item
   // define the actual removeItem function
   removeItem(index) {
     // alert(index);
@@ -50,9 +55,9 @@ class App extends React.Component {
     return (
       <div className="App" >
         <header className="App-header" >
-          <input onChange={this.handleChange} type="text" value={this.state.text} />
-          <button onClick={this.addNewTodo}>Add New Task</button>
-          <TodoList removeItem={this.removeItem} tasks={this.state.todos} />
+          <input onChange={this.handleChange.bind(this)} type="text" value={this.state.text} />
+          <button onClick={this.addNewTodo.bind(this)}>Add New Task</button>
+          <TodoList removeItem={this.removeItem.bind(this)} tasks={this.state.todos} />
         </header>
       </div>
     );
