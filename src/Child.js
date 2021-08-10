@@ -3,6 +3,7 @@
 
 function TodoList(props) {
 
+    // component communication item
     // call the function in parent component
     function removeItem(index) {
         // pass the index to the parent component function
@@ -10,8 +11,8 @@ function TodoList(props) {
 
     }
 
-    const tasks = props.tasks.map((t, index) => {
 
+    const tasks = props.tasks.map((t, index) => {
         return (<li key={index}>
             {t}
             <button
